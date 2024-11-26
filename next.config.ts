@@ -1,16 +1,14 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, // Optional, enables React strict mode for better debugging
-  // Add other custom configuration options here
-  // For example:
-  // images: {
-  //   domains: ['example.com'], // If you're using external image domains
-  // },
-  // i18n: {
-  //   locales: ['en', 'fr'], // If you're using internationalization
-  //   defaultLocale: 'en',
-  // },
+  reactStrictMode: true, // Enable React Strict Mode for better debugging in development
+  // Environment variables for production (on Vercel)
+  env: {
+    NEXT_PUBLIC_GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID, // Expose GitHub Client ID
+    NEXT_PUBLIC_GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET, // Expose GitHub Client Secret
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL || 'http://localhost:3000/', // Set the NEXTAUTH_URL for authentication
+  },
+  
 };
 
 export default nextConfig;
